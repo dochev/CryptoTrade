@@ -112,7 +112,7 @@ class TradingEnvironment(gym.Env):
             - shape: The shape of the space. An `int` or `list`/`tuple` of `int`s.
         """
         from tensorforce.environments import OpenAIGym
-        return OpenAIGym.specs_from_gym_space(self.observation_space)
+        return OpenAIGym.specs_from_gym_space(self.observation_space, ignore_value_bounds=True)
 
     @property
     def actions(self) -> Tuple[TensorForceStateType, TensorForceStateShape, int, TensorForceMinMaxValue, TensorForceMinMaxValue]:
@@ -126,7 +126,7 @@ class TradingEnvironment(gym.Env):
             - max_value (optional if type == 'float'): An `int` or `float`. Defaults to `None`.
         """
         from tensorforce.environments import OpenAIGym
-        return OpenAIGym.specs_from_gym_space(self.action_space)
+        return OpenAIGym.specs_from_gym_space(self.action_space, ignore_value_bounds=False)
 
     def _take_action(self, action: TradeActionUnion) -> Trade:
         """Determines a specific trade to be taken and executes it within the exchange.
