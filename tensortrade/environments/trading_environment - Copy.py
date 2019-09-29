@@ -104,7 +104,8 @@ class TradingEnvironment(Environment):
     def reward_strategy(self, reward_strategy: RewardStrategy):
         self._reward_strategy = reward_strategy
 
-    def states(self):
+    @property
+    def states(self) -> Tuple[TensorForceStateType, TensorForceStateShape]:
         """The state space specification, required for `tensorforce` agents.
 
         The tuple contains the following attributes:
@@ -114,7 +115,8 @@ class TradingEnvironment(Environment):
         from tensorforce.environments import OpenAIGym
         return OpenAIGym.specs_from_gym_space(self.observation_space, ignore_value_bounds=True)
 
-    def actions(self):
+    @property
+    def actions(self) -> Tuple[TensorForceStateType, TensorForceStateShape, int, TensorForceMinMaxValue, TensorForceMinMaxValue]:
         """The action space specification, required for `tensorforce` agents.
 
         The tuple contains the following attributes:
