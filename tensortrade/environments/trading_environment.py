@@ -25,13 +25,14 @@ from tensortrade.features import FeaturePipeline
 from tensortrade.rewards import RewardStrategy
 from tensortrade.exchanges import InstrumentExchange
 from tensortrade.trades import Trade
+from tensorforce.environments import Environment
 
 TensorForceStateType = Union[bool, int, float]
 TensorForceStateShape = Union[int, List[int], Tuple[int, ...]]
 TensorForceMinMaxValue = Union[int, float]
 
 
-class TradingEnvironment(gym.Env):
+class TradingEnvironment(Environment):
     """A trading environment made for use with Gym-compatible reinforcement learning algorithms."""
 
     def __init__(self,
