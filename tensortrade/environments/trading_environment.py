@@ -111,7 +111,7 @@ class TradingEnvironment(gym.Env):
             - type: Either 'bool', 'int', or 'float'.
             - shape: The shape of the space. An `int` or `list`/`tuple` of `int`s.
         """
-        from tensorforce.contrib.openai_gym import OpenAIGym
+        from tensorforce.environments import OpenAIGym
         return OpenAIGym.state_from_space(self.observation_space)
 
     @property
